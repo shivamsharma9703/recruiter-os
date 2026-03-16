@@ -1,0 +1,97 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black: #000000;
+  --w: #ffffff;
+  --g25:  #060606;
+  --g50:  #0c0c0c;
+  --g75:  #111111;
+  --g100: #161616;
+  --g150: #1c1c1c;
+  --g200: #222222;
+  --g250: #2a2a2a;
+  --g300: #333333;
+  --g350: #3d3d3d;
+  --g400: #484848;
+  --g450: #555555;
+  --g500: #666666;
+  --g550: #787878;
+  --g600: #888888;
+  --g700: #aaaaaa;
+  --g750: #bbbbbb;
+  --g800: #cccccc;
+  --g850: #dddddd;
+  --g900: #e8e8e8;
+  --g950: #f2f2f2;
+  --font: 'Syne', system-ui, sans-serif;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --mono: 'DM Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--w);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--g300);
+  color: var(--w);
+}
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--g250); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to   { background-position: 48px 48px; }
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes scanH {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+@keyframes draw {
+  from { stroke-dashoffset: 600; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes ripple {
+  from { transform: scale(0); opacity: 0.25; }
+  to   { transform: scale(5); opacity: 0; }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+              transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
