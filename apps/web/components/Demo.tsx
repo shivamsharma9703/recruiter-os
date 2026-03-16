@@ -23,15 +23,29 @@ export default function Demo() {
   }
 
   async function submit() {
-    const err = validate();
-    if (err) { setError(err); return; }
-    setError("");
-    setLoading(true);
-    // Simulate API call — we'll wire real backend later
-    await new Promise((r) => setTimeout(r, 1400));
+  const err = validate();
+  if (err) { setError(err); return; }
+  setError("");
+  setLoading(true);
+
+  try {
+    const response = await fetch("/api/demo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+    } else {
+      setError("Something went wrong. Please try again.");
+    }
+  } catch (e) {
+    setError("Something went wrong. Please try again.");
+  } finally {
     setLoading(false);
-    setSubmitted(true);
   }
+}
 
   const inputStyle = {
     width: "100%",
