@@ -78,6 +78,20 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <link rel="canonical" href="https://recruiteros.com" />
+        <script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-SR7ZSBDM95"
+/>
+<script
+  dangerouslySetInnerHTML={{
+    __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SR7ZSBDM95');
+    `,
+  }}
+/>
       </head>
       <body>{children}</body>
     </html>
